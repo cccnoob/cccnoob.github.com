@@ -1,4 +1,4 @@
-# NexT
+# Ccc nood
 
 > NexT is a high quality elegant [Jekyll](https://jekyllrb.com) theme ported from [Hexo NexT](https://github.com/iissnan/hexo-theme-next). It is crafted from scratch, with love.
 
@@ -163,9 +163,3 @@ fancybox: true
 
 # Specify the date when the site was setup
 since: 2013
-
-```
-
-## Browser support
-
-![Browser support](http://iissnan.com/nexus/next/browser-support.png)
