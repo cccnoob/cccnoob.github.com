@@ -1,7 +1,9 @@
 ---
 title: 简单实现chrome插件
 date: 2017-12-18 21:00:10
-tags: chrome插件
+categories:
+- chrome
+tags:chrome
 ---
 
 >  [图灵社区《Chrome扩展及应用开发（首发版）》](http://www.ituring.com.cn/book/1421)
