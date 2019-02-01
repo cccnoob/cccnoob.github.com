@@ -1,9 +1,9 @@
 ---
-title: 简单实现chrome插件
-date: 2017-12-18 21:00:10
+title: 中文測試2
+date: 2013-12-24 23:31:30
 categories:
-- chrome
-tags: chrome
+- test/test
+tags: test
 ---
 
 >  [图灵社区《Chrome扩展及应用开发（首发版）》](http://www.ituring.com.cn/book/1421)
