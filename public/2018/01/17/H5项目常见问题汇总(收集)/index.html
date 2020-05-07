@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.0 -->
+    <script>
+        window.materialVersion = "1.5.0"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Title -->
+    
+    <title>
+        
+            H5移动端页面常见兼容问题及解决方案 | 
+        
+        Ccc Noob
+    </title>
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="theme-color" content="#0097A7">
+    <meta name="author" content="Ccc Noob">
+    <meta name="description" itemprop="description" content="Ccc Noob">
+    <meta name="keywords" content="ccc noob,移动端">
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(key){try{localStorage.removeItem(key)}catch(e){}};lsloader.setLS=function(key,val){try{localStorage.setItem(key,val)}catch(e){}};lsloader.getLS=function(key){var val="";try{val=localStorage.getItem(key)}catch(e){val=""}return val};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var keys=[];for(var i=0;i<localStorage.length;i++){keys.push(localStorage.key(i))}keys.forEach(function(key){var data=lsloader.getLS(key);if(window.oldVersion){var remove=window.oldVersion.reduce(function(p,c){return p||data.indexOf("/*"+c+"*/")!==-1},false);if(remove){lsloader.removeLS(key)}}})}catch(e){}};lsloader.clean();lsloader.load=function(jsname,jspath,cssonload,isJs){if(typeof cssonload==="boolean"){isJs=cssonload;cssonload=undefined}isJs=isJs||false;cssonload=cssonload||function(){};var code;code=this.getLS(jsname);if(code&&code.indexOf(versionString)===-1){this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}if(code){var versionNumber=code.split(versionString)[0];if(versionNumber!=jspath){console.log("reload:"+jspath);this.removeLS(jsname);this.requestResource(jsname,jspath,cssonload,isJs);return}code=code.split(versionString)[1];if(isJs){this.jsRunSequence.push({name:jsname,code:code});this.runjs(jspath,jsname,code)}else{document.getElementById(jsname).appendChild(document.createTextNode(code));cssonload()}}else{this.requestResource(jsname,jspath,cssonload,isJs)}};lsloader.requestResource=function(name,path,cssonload,isJs){var that=this;if(isJs){this.iojs(path,name,function(path,name,code){that.setLS(name,path+versionString+code);that.runjs(path,name,code)})}else{this.iocss(path,name,function(code){document.getElementById(name).appendChild(document.createTextNode(code));that.setLS(name,path+versionString+code)},cssonload)}};lsloader.iojs=function(path,jsname,callback){var that=this;that.jsRunSequence.push({name:jsname,code:""});try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(path,jsname,xhr.response);return}}that.jsfallback(path,jsname)}};xhr.send(null)}catch(e){that.jsfallback(path,jsname)}};lsloader.iocss=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.iofonts=function(path,jsname,callback,cssonload){var that=this;try{var xhr=new XMLHttpRequest;xhr.open("get",path,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){callback(xhr.response);cssonload();return}}that.cssfallback(path,jsname,cssonload)}};xhr.send(null)}catch(e){that.cssfallback(path,jsname,cssonload)}};lsloader.runjs=function(path,name,code){if(!!name&&!!code){for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code=code}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var script=document.createElement("script");script.appendChild(document.createTextNode(this.jsRunSequence[0].code));script.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(script);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var that=this;var script=document.createElement("script");script.src=this.jsRunSequence[0].path;script.type="text/javascript";this.jsRunSequence[0].status="loading";script.onload=function(){that.jsRunSequence.shift();if(that.jsRunSequence.length>0){that.runjs()}};document.body.appendChild(script)}};lsloader.tagLoad=function(path,name){this.jsRunSequence.push({name:name,code:"",path:path,status:"failed"});this.runjs()};lsloader.jsfallback=function(path,name){if(!!this.jsnamemap[name]){return}else{this.jsnamemap[name]=name}for(var k in this.jsRunSequence){if(this.jsRunSequence[k].name==name){this.jsRunSequence[k].code="";this.jsRunSequence[k].status="failed";this.jsRunSequence[k].path=path}}this.runjs()};lsloader.cssfallback=function(path,name,cssonload){if(!!this.cssnamemap[name]){return}else{this.cssnamemap[name]=1}var link=document.createElement("link");link.type="text/css";link.href=path;link.rel="stylesheet";link.onload=link.onerror=cssonload;var root=document.getElementsByTagName("script")[0];root.parentNode.insertBefore(link,root)};lsloader.runInlineScript=function(scriptId,codeId){var code=document.getElementById(codeId).innerText;this.jsRunSequence.push({name:scriptId,code:code});this.runjs()};lsloader.loadCombo=function(jslist){var updateList="";var requestingModules={};for(var k in jslist){var LS=this.getLS(jslist[k].name);if(!!LS){var version=LS.split(versionString)[0];var code=LS.split(versionString)[1]}else{var version=""}if(version==jslist[k].path){this.jsRunSequence.push({name:jslist[k].name,code:code,path:jslist[k].path})}else{this.jsRunSequence.push({name:jslist[k].name,code:null,path:jslist[k].path,status:"comboloading"});requestingModules[jslist[k].name]=true;updateList+=(updateList==""?"":";")+jslist[k].path}}var that=this;if(!!updateList){var xhr=new XMLHttpRequest;xhr.open("get",combo+updateList,true);xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status>=200&&xhr.status<300||xhr.status==304){if(xhr.response!=""){that.runCombo(xhr.response,requestingModules);return}}else{for(var i in that.jsRunSequence){if(requestingModules[that.jsRunSequence[i].name]){that.jsRunSequence[i].status="failed"}}that.runjs()}}};xhr.send(null)}this.runjs()};lsloader.runCombo=function(comboCode,requestingModules){comboCode=comboCode.split("/*combojs*/");comboCode.shift();for(var k in this.jsRunSequence){if(!!requestingModules[this.jsRunSequence[k].name]&&!!comboCode[0]){this.jsRunSequence[k].status="comboJS";this.jsRunSequence[k].code=comboCode[0];this.setLS(this.jsRunSequence[k].name,this.jsRunSequence[k].path+versionString+comboCode[0]);comboCode.shift()}}this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.ico">
+    <link rel="icon" sizes="192x192" href="/img/logo.gif">
+    <link rel="apple-touch-icon" href="/img/logo.gif">
+
+    <!--iOS -->
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Ccc Noob">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #00bcd4 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #00bcd4;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #00bcd4;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #00bcd4;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icon -->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="H5移动端页面常见兼容问题及解决方案 | Ccc Noob">
+    <meta property="og:image" content="http://yoursite.com/img/logo.gif" />
+    <meta property="og:description" content="Ccc Noob">
+    <meta property="og:article:tag" content="移动端"> 
+
+    
+        <meta property="article:published_time" content="Wed Jan 17 2018 18:30:10 GMT+0800" />
+        <meta property="article:modified_time" content="Thu Jan 18 2018 08:51:14 GMT+0800" />
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:title" content="H5移动端页面常见兼容问题及解决方案 | Ccc Noob">
+    <meta name="twitter:description" content="Ccc Noob">
+    <meta name="twitter:image" content="http://yoursite.com/img/logo.gif">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="http://yoursite.com" />
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2018/01/17/H5项目常见问题汇总(收集)/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/01/17/H5项目常见问题汇总(收集)/index.html",
+    "headline": "H5移动端页面常见兼容问题及解决方案",
+    "datePublished": "Wed Jan 17 2018 18:30:10 GMT+0800",
+    "dateModified": "Thu Jan 18 2018 08:51:14 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Ccc Noob",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.jpg"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ccc Noob",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/logo.gif"
+        }
+    },
+    "keywords": ",移动端ccc noob",
+    "description": "Ccc Noob",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Meta基础知识："><span class="post-toc-number">1.</span> <span class="post-toc-text">Meta基础知识：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常见问题："><span class="post-toc-number">2.</span> <span class="post-toc-text">常见问题：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常用的移动端框架"><span class="post-toc-number">3.</span> <span class="post-toc-text">常用的移动端框架</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                H5移动端页面常见兼容问题及解决方案
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.jpg" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Ccc Noob</strong>
+        <span>1月 17, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/移动端/">移动端</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">share</i>
+        <span class="visuallyhidden">share</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+        
+
+        
+
+        <!-- Share Weibo -->
+        
+            <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=H5移动端页面常见兼容问题及解决方案&url=http://yoursite.com/2018/01/17/H5项目常见问题汇总(收集)/index.html&pic=http://yoursite.com/img/favicon.ico&searchPic=false&style=simple" target="_blank">
+                <li class="mdl-menu__item">
+                    分享到微博
+                </li>
+            </a>
+        
+
+        <!-- Share Twitter -->
+        
+
+        <!-- Share Facebook -->
+        
+
+        <!-- Share Google+ -->
+        
+
+        <!-- Share LinkedIn -->
+        
+
+        <!-- Share QQ -->
+        
+            <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Ccc Noob&title=H5移动端页面常见兼容问题及解决方案&summary=Ccc Noob&pics=http://yoursite.com/img/favicon.ico&url=http://yoursite.com/2018/01/17/H5项目常见问题汇总(收集)/index.html" target="_blank">
+                <li class="mdl-menu__item">
+                    分享到 QQ
+                </li>
+            </a>
+        
+
+        <!-- Share Telegram -->
+        
+    </ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h3 id="Meta基础知识："><a href="#Meta基础知识：" class="headerlink" title="Meta基础知识："></a>Meta基础知识：</h3><ul>
+<li>H5页面窗口自动调整到设备宽度，并禁止用户缩放页面</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一、HTML页面结构</span></span><br><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"</span> /&gt;</span><br><span class="line"><span class="comment">// width    设置viewport宽度，为一个正整数，或字符串‘device-width’</span></span><br><span class="line"><span class="comment">// height   设置viewport高度，一般设置了宽度，会自动解析出高度，可以不用设置</span></span><br><span class="line"><span class="comment">// initial-scale    默认缩放比例，为一个数字，可以带小数</span></span><br><span class="line"><span class="comment">// minimum-scale    允许用户最小缩放比例，为一个数字，可以带小数</span></span><br><span class="line"><span class="comment">// maximum-scale    允许用户最大缩放比例，为一个数字，可以带小数</span></span><br><span class="line"><span class="comment">// user-scalable    是否允许手动缩放</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//二、JS动态判断</span></span><br><span class="line"><span class="keyword">var</span> phoneWidth =  <span class="built_in">parseInt</span>(<span class="built_in">window</span>.screen.width);</span><br><span class="line"><span class="keyword">var</span> phoneScale = phoneWidth/<span class="number">640</span>;</span><br><span class="line"><span class="keyword">var</span> ua = navigator.userAgent;</span><br><span class="line"><span class="keyword">if</span> (<span class="regexp">/Android (\d+\.\d+)/</span>.test(ua))&#123;</span><br><span class="line">    <span class="keyword">var</span> version = <span class="built_in">parseFloat</span>(<span class="built_in">RegExp</span>.$<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(version&gt;<span class="number">2.3</span>)&#123;</span><br><span class="line">        <span class="built_in">document</span>.write(<span class="string">'&lt;meta name="viewport" content="width=640, minimum-scale = '</span>+phoneScale+<span class="string">', maximum-scale = '</span>+phoneScale+<span class="string">', target-densitydpi=device-dpi"&gt;'</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">document</span>.write(<span class="string">'&lt;meta name="viewport" content="width=640, target-densitydpi=device-dpi"&gt;'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">'&lt;meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi"&gt;'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>空白页基本meta标签</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 设置缩放 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1, user-scalable=no, minimal-ui"</span> /&gt;</span><br><span class="line">&lt;!-- 可隐藏地址栏，仅针对IOS的Safari（注：IOS7<span class="number">.0</span>版本以后，safari上已看不到效果） --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"apple-mobile-web-app-capable"</span> content=<span class="string">"yes"</span> /&gt;</span><br><span class="line">&lt;!-- 仅针对IOS的Safari顶端状态条的样式（可选<span class="keyword">default</span>/black/black-translucent ） --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"apple-mobile-web-app-status-bar-style"</span> content=<span class="string">"black"</span> /&gt;</span><br><span class="line">&lt;!-- IOS中禁用将数字识别为电话号码/忽略Android平台中对邮箱地址的识别 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"format-detection"</span>content=<span class="string">"telephone=no, email=no"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>其他meta标签</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 启用<span class="number">360</span>浏览器的极速模式(webkit) --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"renderer"</span> content=<span class="string">"webkit"</span>&gt;</span><br><span class="line">&lt;!-- 避免IE使用兼容模式 --&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=edge"</span>&gt;</span><br><span class="line">&lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"HandheldFriendly"</span> content=<span class="string">"true"</span>&gt;</span><br><span class="line">&lt;!-- 微软的老式浏览器 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"MobileOptimized"</span> content=<span class="string">"320"</span>&gt;</span><br><span class="line">&lt;!-- uc强制竖屏 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"screen-orientation"</span> content=<span class="string">"portrait"</span>&gt;</span><br><span class="line">&lt;!-- QQ强制竖屏 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"x5-orientation"</span> content=<span class="string">"portrait"</span>&gt;</span><br><span class="line">&lt;!-- UC强制全屏 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"full-screen"</span> content=<span class="string">"yes"</span>&gt;</span><br><span class="line">&lt;!-- QQ强制全屏 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"x5-fullscreen"</span> content=<span class="string">"true"</span>&gt;</span><br><span class="line">&lt;!-- UC应用模式 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"browsermode"</span> content=<span class="string">"application"</span>&gt;</span><br><span class="line">&lt;!-- QQ应用模式 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"x5-page-mode"</span> content=<span class="string">"app"</span>&gt;</span><br><span class="line">&lt;!-- windows phone 点击无高光 --&gt;</span><br><span class="line">&lt;meta name=<span class="string">"msapplication-tap-highlight"</span> content=<span class="string">"no"</span>&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="常见问题："><a href="#常见问题：" class="headerlink" title="常见问题："></a>常见问题：</h3><ul>
+<li>移动端如何定义字体font-family</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@ --------------------------------------中文字体的英文名称</span><br><span class="line">@ 宋体      SimSun</span><br><span class="line">@ 黑体      SimHei</span><br><span class="line">@ 微信雅黑   Microsoft Yahei</span><br><span class="line">@ 微软正黑体 Microsoft JhengHei</span><br><span class="line">@ 新宋体    NSimSun</span><br><span class="line">@ 新细明体  MingLiU</span><br><span class="line">@ 细明体    MingLiU</span><br><span class="line">@ 标楷体    DFKai-SB</span><br><span class="line">@ 仿宋     FangSong</span><br><span class="line">@ 楷体     KaiTi</span><br><span class="line">@ 仿宋_GB2312  FangSong_GB2312</span><br><span class="line">@ 楷体_GB2312  KaiTi_GB2312  </span><br><span class="line">@</span><br><span class="line">@ 说明：中文字体多数使用宋体、雅黑，英文用Helvetica</span><br><span class="line"></span><br><span class="line">body &#123; <span class="selector-tag">font-family</span>: <span class="selector-tag">Microsoft</span> <span class="selector-tag">Yahei</span>,<span class="selector-tag">SimSun</span>,<span class="selector-tag">Helvetica</span>; &#125;</span><br></pre></td></tr></table></figure>
+<p>打电话发短信写邮件怎么实现<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// 一、打电话</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"tel:0755-10086"</span>&gt;</span>打电话给:0755-10086<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">//  二、发短信，winphone系统无效</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"sms:10086"</span>&gt;</span>发短信给: 10086<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// 三、写邮件</span><br><span class="line">//注：在添加这些功能时，第一个功能以"?"开头，后面的以"&amp;"开头</span><br><span class="line">//1.普通邮件</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto:863139978@qq.com"</span>&gt;</span>点击我发邮件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">//2.收件地址后添加?cc=开头，可添加抄送地址（Android存在兼容问题）</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto:863139978@qq.com?cc=zhangqian0406@yeah.net"</span>&gt;</span>点击我发邮件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">//3.跟着抄送地址后，写上&amp;bcc=,可添加密件抄送地址（Android存在兼容问题）</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto:863139978@qq.com?cc=zhangqian0406@yeah.net&amp;bcc=384900096@qq.com"</span>&gt;</span>点击我发邮件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">//4.包含多个收件人、抄送、密件抄送人，用分号(;)隔开多个邮件人的地址</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto:863139978@qq.com;384900096@qq.com"</span>&gt;</span>点击我发邮件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">//5.包含主题，用?subject=</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto:863139978@qq.com?subject=邮件主题"</span>&gt;</span>点击我发邮件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">//6.包含内容，用?body=;如内容包含文本，使用%0A给文本换行 </span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto:863139978@qq.com?body=邮件主题内容%0A腾讯诚信%0A期待您的到来"</span>&gt;</span>点击我发邮件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">//7.内容包含链接，含http(s)://等的文本自动转化为链接</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto:863139978@qq.com?body=http://www.baidu.com"</span>&gt;</span>点击我发邮件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">//8.内容包含图片（PC不支持）</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto:863139978@qq.com?body=&lt;img src='images/1.jpg' /&gt;"</span>&gt;</span>点击我发邮件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">//9.完整示例</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto:863139978@qq.com;384900096@qq.com?cc=zhangqian0406@yeah.net&amp;bcc=993233461@qq.com&amp;subject=[邮件主题]&amp;body=腾讯诚邀您参与%0A%0Ahttp://www.baidu.com%0A%0A&lt;img src='images/1.jpg' /&gt;"</span>&gt;</span>点击我发邮件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>移动端touch事件（区分webkit和winphone）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/* 当用户手指放在移动设备在屏幕上滑动会触发的touch事件 */</span><br><span class="line">// 以下支持webkit</span><br><span class="line">touchstart——当手指触碰屏幕时候发生。不管当前有多少只手指</span><br><span class="line">touchmove——当手指在屏幕上滑动时连续触发。通常我们再滑屏页面，会调用event的preventDefault()可以阻止默认情况的发生：阻止页面滚动</span><br><span class="line">touchend——当手指离开屏幕时触发</span><br><span class="line">touchcancel——系统停止跟踪触摸时候会触发。例如在触摸过程中突然页面alert()一个提示框，此时会触发该事件，这个事件比较少用</span><br><span class="line"></span><br><span class="line">//TouchEvent说明：</span><br><span class="line">touches：屏幕上所有手指的信息</span><br><span class="line">targetTouches：手指在目标区域的手指信息</span><br><span class="line">changedTouches：最近一次触发该事件的手指信息</span><br><span class="line">touchend时，touches与targetTouches信息会被删除，changedTouches保存的最后一次的信息，最好用于计算手指信息</span><br><span class="line"></span><br><span class="line">//参数信息(changedTouches[0])</span><br><span class="line">clientX、clientY在显示区的坐标</span><br><span class="line">target：当前元素</span><br><span class="line"></span><br><span class="line">//事件响应顺序</span><br><span class="line">ontouchstart  &gt; ontouchmove  &gt; ontouchend &gt; onclick</span><br><span class="line"></span><br><span class="line">// 以下支持winphone 8</span><br><span class="line">MSPointerDown——当手指触碰屏幕时候发生。不管当前有多少只手指</span><br><span class="line">MSPointerMove——当手指在屏幕上滑动时连续触发。通常我们再滑屏页面，会调用css的html&#123;-ms-touch-action: none;&#125;可以阻止默认情况的发生：阻止页面滚动</span><br><span class="line">MSPointerUp——当手指离开屏幕时触发</span><br></pre></td></tr></table></figure></p>
+<p>移动端click屏幕产生200-300ms的延时响应<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">说明：移动设备上的web网页是有300ms延迟的，玩玩会造成按钮点击延迟甚至是点击失效。</span><br><span class="line"></span><br><span class="line">以下是历史原因，来源一个公司内一个同事的分享：</span><br><span class="line">2007年苹果发布首款iphone上IOS系统搭载的safari为了将适用于PC端上大屏幕的网页能比较好的展示在手机端上，使用了双击缩放(double tap to zoom)的方案，比如你在手机上用浏览器打开一个PC上的网页，你可能在看到页面内容虽然可以撑满整个屏幕，但是字体、图片都很小看不清，此时可以快速双击屏幕上的某一部分，你就能看清该部分放大后的内容，再次双击后能回到原始状态。</span><br><span class="line"></span><br><span class="line">双击缩放是指用手指在屏幕上快速点击两次，iOS 自带的 Safari 浏览器会将网页缩放至原始比例。</span><br><span class="line"></span><br><span class="line">原因就出在浏览器需要如何判断快速点击上，当用户在屏幕上单击某一个元素时候，例如跳转链接&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;，此处浏览器会先捕获该次单击，但浏览器不能决定用户是单纯要点击链接还是要双击该部分区域进行缩放操作，所以，捕获第一次单击后，浏览器会先Hold一段时间t，如果在t时间区间里用户未进行下一次点击，则浏览器会做单击跳转链接的处理，如果t时间里用户进行了第二次单击操作，则浏览器会禁止跳转，转而进行对该部分区域页面的缩放操作。那么这个时间区间t有多少呢？在IOS safari下，大概为300毫秒。这就是延迟的由来。造成的后果用户纯粹单击页面，页面需要过一段时间才响应，给用户慢体验感觉，对于web开发者来说是，页面js捕获click事件的回调函数处理，需要300ms后才生效，也就间接导致影响其他业务逻辑的处理。</span><br><span class="line"></span><br><span class="line">//解决方案：</span><br><span class="line">fastclick可以解决在手机上点击事件的300ms延迟</span><br><span class="line">zepto的touch模块，tap事件也是为了解决在click的延迟问题</span><br></pre></td></tr></table></figure></p>
+<p>Rentina显示屏原理及设计方案<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*说明：retina屏是一种具备超高像素密度的液晶屏，同样大小的屏幕上显示的像素点由1个变为多个，如在同样带下的屏幕上，苹果设备的retina显示屏中，像素点1个变为4个。</span></span><br><span class="line"><span class="comment">在高清显示屏中的位图被放大，图片会变得模糊，因此移动端的视觉稿通常会设计为传统PC的2倍。</span></span><br><span class="line"><span class="comment">那么，前端的应对方案是：设计稿切出来的图片长宽保证为偶数，并使用backgroud-size把图片缩小为原来的1/2</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">//例如图片宽高为：200px*200px，那么写法如下</span><br><span class="line"><span class="selector-class">.css</span>&#123;<span class="attribute">width</span>:<span class="number">100px</span>;<span class="attribute">height</span>:<span class="number">100px</span>;<span class="attribute">background-size</span>:<span class="number">100px</span> <span class="number">100px</span>;&#125;</span><br><span class="line"><span class="comment">/*其它元素的取值为原来的1/2，例如视觉稿40px的字体，使用样式的写法为20px*/</span></span><br><span class="line"><span class="selector-class">.css</span>&#123;<span class="attribute">font-size</span>:<span class="number">20px</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*image-set设计Rentina背景图</span></span><br><span class="line"><span class="comment">image-set,webkit私有属性，也是CSS4的属性，为解决Rentina屏幕下的图像而生。*/</span></span><br><span class="line"><span class="selector-class">.css</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(images/bg.jpg) no-repeat center;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">-webkit-image-set</span>(</span><br><span class="line">    url(images/bg.jpg) <span class="number">1</span>x,     //支持image-set普通屏</span><br><span class="line">    url(images/bg-2x.jpg) 2x); //支持image-set的Rentinan</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>点击元素产生背景或边框怎么去掉<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*ios用户点击一个链接，会出现一个半透明灰色遮罩, 如果想要禁用，可设置-webkit-tap-highlight-color的alpha值为0去除灰色半透明遮罩；</span></span><br><span class="line"><span class="comment">//android用户点击一个链接，会出现一个边框或者半透明灰色遮罩, 不同生产商定义出来额效果不一样，可设置-webkit-tap-highlight-color的alpha值为0去除部分机器自带的效果；</span></span><br><span class="line"><span class="comment">//winphone系统,点击标签产生的灰色半透明背景，能通过设置&lt;meta name="msapplication-tap-highlight" content="no"&gt;去掉；</span></span><br><span class="line"><span class="comment">//特殊说明：有些机型去除不了，如小米2。对于按钮类还有个办法，不使用a或者input标签，直接用div标签*/</span></span><br><span class="line"><span class="selector-tag">a</span>,<span class="selector-tag">button</span>,<span class="selector-tag">input</span>,<span class="selector-tag">textarea</span> &#123; </span><br><span class="line">    <span class="attribute">-webkit-tap-highlight-color</span>: <span class="built_in">rgba</span>(0,0,0,0); </span><br><span class="line">    -webkit-user-modify:read-write-plaintext-only; //-webkit-user-modify有个副作用，就是输入法不再能够输入多个字符</span><br><span class="line">&#125;   </span><br><span class="line">// 也可以 </span><br><span class="line">* &#123; <span class="attribute">-webkit-tap-highlight-color</span>: <span class="built_in">rgba</span>(0,0,0,0); &#125;</span><br><span class="line">//winphone下</span><br><span class="line">&lt;meta name="msapplication-tap-highlight" content="no"&gt;</span><br></pre></td></tr></table></figure></p>
+<p>美化表单元素<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//一、使用appearance改变webkit浏览器的默认外观</span><br><span class="line"><span class="selector-tag">input</span>,<span class="selector-tag">select</span> &#123; <span class="attribute">-webkit-appearance</span>:none; <span class="attribute">appearance</span>: none; &#125;</span><br><span class="line"></span><br><span class="line">//二、winphone下，使用伪元素改变表单元素默认外观</span><br><span class="line">//1.禁用select默认箭头，::-ms-expand修改表单控件下拉箭头，设置隐藏并使用背景图片来修饰</span><br><span class="line"><span class="selector-tag">select</span><span class="selector-pseudo">::-ms-expand</span> &#123; <span class="attribute">display</span>:none; &#125;</span><br><span class="line"></span><br><span class="line">//2.禁用radio和checkbox默认样式，::-ms-check修改表单复选框或单选框默认图标，设置隐藏并使用背景图片来修饰</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-attr">[type=radio]</span><span class="selector-pseudo">::-ms-check</span>,</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-attr">[type=checkbox]</span><span class="selector-pseudo">::-ms-check</span> &#123; <span class="attribute">display</span>:none; &#125;</span><br><span class="line"></span><br><span class="line">//3.禁用pc端表单输入框默认清除按钮，::-ms-clear修改清除按钮，设置隐藏并使用背景图片来修饰</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-attr">[type=text]</span><span class="selector-pseudo">::-ms-clear</span>,</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-attr">[type=tel]</span><span class="selector-pseudo">::-ms-clear</span>,</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-attr">[type=number]</span><span class="selector-pseudo">::-ms-clear</span> &#123; <span class="attribute">display</span>:none; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>移动端字体单位font-size选择px还是rem<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 如需适配多种移动设备，建议使用rem。以下为参考值：</span><br><span class="line">html &#123; font-size: 62.5%; &#125;   //10*16 = 62.5%</span><br><span class="line">//设置12px字体   这里注意在rem前要加上对应的px值，解决不支持rem的浏览器的兼容问题，做到优雅降级</span><br><span class="line"><span class="selector-tag">body</span> &#123; <span class="attribute">font-size</span>:<span class="number">12px</span>; <span class="attribute">font-size</span>:<span class="number">1.2rem</span>; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>超实用的CSS样式<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">//去掉webkit的滚动条——display: none;</span><br><span class="line">//其他参数</span><br><span class="line">::-webkit-scrollba //滚动条整体部分</span><br><span class="line">::-webkit-scrollbar-thumb   //滚动条内的小方块</span><br><span class="line">::-webkit-scrollbar-track   //滚动条轨道</span><br><span class="line">::-webkit-scrollbar-button  //滚动条轨道两端按钮</span><br><span class="line">::-webkit-scrollbar-track-piece  //滚动条中间部分，内置轨道</span><br><span class="line">::-webkit-scrollbar-corner       //边角，两个滚动条交汇处</span><br><span class="line">::-webkit-resizer            //两个滚动条的交汇处上用于通过拖动调整元素大小的小控件</span><br><span class="line"></span><br><span class="line">// 禁止长按链接与图片弹出菜单</span><br><span class="line"><span class="selector-tag">a</span>,<span class="selector-tag">img</span> &#123; <span class="attribute">-webkit-touch-callout</span>: none &#125;    </span><br><span class="line"></span><br><span class="line">// 禁止ios和android用户选中文字</span><br><span class="line"><span class="selector-tag">html</span>,<span class="selector-tag">body</span> &#123;<span class="attribute">-webkit-user-select</span>:none; <span class="attribute">user-select</span>: none; &#125;</span><br><span class="line"></span><br><span class="line">// 改变输入框placeholder的颜色值</span><br><span class="line"><span class="selector-pseudo">::-webkit-input-placeholder</span> &#123; <span class="comment">/* WebKit browsers */</span></span><br><span class="line"><span class="attribute">color</span>: <span class="number">#999</span>; &#125;</span><br><span class="line"><span class="selector-pseudo">:-moz-placeholder</span> &#123; <span class="comment">/* Mozilla Firefox 4 to 18 */</span></span><br><span class="line"><span class="attribute">color</span>: <span class="number">#999</span>; &#125;</span><br><span class="line"><span class="selector-pseudo">::-moz-placeholder</span> &#123; <span class="comment">/* Mozilla Firefox 19+ */</span></span><br><span class="line"><span class="attribute">color</span>: <span class="number">#999</span>; &#125;</span><br><span class="line"><span class="selector-pseudo">:-ms-input-placeholder</span> &#123; <span class="comment">/* Internet Explorer 10+ */</span></span><br><span class="line"><span class="attribute">color</span>: <span class="number">#999</span>; &#125;</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:focus</span><span class="selector-pseudo">::-webkit-input-placeholder</span>&#123; <span class="attribute">color</span>:<span class="number">#999</span>; &#125;</span><br><span class="line"></span><br><span class="line">// android上去掉语音输入按钮</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">::-webkit-input-speech-button</span> &#123;<span class="attribute">display</span>: none&#125;</span><br><span class="line"></span><br><span class="line">// 阻止windows Phone的默认触摸事件</span><br><span class="line"><span class="comment">/*说明：winphone下默认触摸事件事件使用e.preventDefault是无效的，可通过样式来禁用，如：*/</span></span><br><span class="line">html &#123; -ms-touch-action:none; &#125; //禁止winphone默认触摸事件</span><br></pre></td></tr></table></figure></p>
+<p>取消input在ios下，输入的时候英文首字母的默认大写<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input autocapitalize="off" autocorrect="off" /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>手机拍照和上传图片<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//IOS有拍照、录像、选取本地图片功能，部分Android只有选择本地图片功能。Winphone不支持</span><br><span class="line">&lt;input type=&quot;file&quot; accept=&quot;images/*&quot; /&gt;</span><br><span class="line">&lt;input type=&quot;file&quot; accept=&quot;video/*&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>屏幕旋转的事件和样式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JS处理</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">orientInit</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> orientChk = <span class="built_in">document</span>.documentElement.clientWidth &gt; <span class="built_in">document</span>.documentElement.clientHeight?<span class="string">'landscape'</span>:<span class="string">'portrait'</span>;</span><br><span class="line">    <span class="keyword">if</span>(orientChk ==<span class="string">'lapdscape'</span>)&#123;</span><br><span class="line">        <span class="comment">//这里是横屏下需要执行的事件</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//这里是竖屏下需要执行的事件</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">orientInit();</span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'onorientationchange'</span> <span class="keyword">in</span> <span class="built_in">window</span>?<span class="string">'orientationchange'</span>:<span class="string">'resize'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    setTimeout(orientInit, <span class="number">100</span>);</span><br><span class="line">&#125;,<span class="literal">false</span>)    </span><br><span class="line"></span><br><span class="line"><span class="comment">//CSS处理</span></span><br><span class="line"><span class="comment">//竖屏时样式</span></span><br><span class="line">@media all and (orientation:portrait)&#123;   &#125;</span><br><span class="line"><span class="comment">//横屏时样式</span></span><br><span class="line">@media all and (orientation:landscape)&#123;   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>audio元素和video元素在ios和andriod中无法自动播放<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//音频，写法一</span><br><span class="line">&lt;audio src=&quot;music/bg.mp3&quot; autoplay loop controls&gt;你的浏览器还不支持哦&lt;/audio&gt;</span><br><span class="line"></span><br><span class="line">//音频，写法二</span><br><span class="line">&lt;audio controls=&quot;controls&quot;&gt; </span><br><span class="line">    &lt;source src=&quot;music/bg.ogg&quot; type=&quot;audio/ogg&quot;&gt;&lt;/source&gt;</span><br><span class="line">    &lt;source src=&quot;music/bg.mp3&quot; type=&quot;audio/mpeg&quot;&gt;&lt;/source&gt;</span><br><span class="line">    优先播放音乐bg.ogg，不支持在播放bg.mp3</span><br><span class="line">&lt;/audio&gt;</span><br><span class="line"></span><br><span class="line">//JS绑定自动播放（操作window时，播放音乐）</span><br><span class="line">$(window).one(&apos;touchstart&apos;, function()&#123;</span><br><span class="line">    music.play();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//微信下兼容处理</span><br><span class="line">document.addEventListener(&quot;WeixinJSBridgeReady&quot;, function () &#123;</span><br><span class="line">    music.play();</span><br><span class="line">&#125;, false);</span><br><span class="line"></span><br><span class="line">//小结</span><br><span class="line">//1.audio元素的autoplay属性在IOS及Android上无法使用，在PC端正常</span><br><span class="line">//2.audio元素没有设置controls时，在IOS及Android会占据空间大小，而在PC端Chrome是不会占据任何空间</span><br></pre></td></tr></table></figure></p>
+<p>重力感应事件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 运用HTML5的deviceMotion，调用重力感应事件</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">window</span>.DeviceMotionEvent)&#123;</span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">'devicemotion'</span>, deviceMotionHandler, <span class="literal">false</span>)</span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> speed = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">var</span> x = y = z = lastX = lastY = lastZ = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deviceMotionHandler</span>(<span class="params">eventData</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> acceleration = event.accelerationIncludingGravity;</span><br><span class="line">    x = acceleration.x;</span><br><span class="line">    y = acceleration.y; </span><br><span class="line">    z = acceleration.z;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">Math</span>.abs(x-lastX)&gt;speed || <span class="built_in">Math</span>.abs(y-lastY)&gt;speed || <span class="built_in">Math</span>.abs(z-lastZ)&gt;speed )&#123;</span><br><span class="line">        <span class="comment">//这里是摇动后要执行的方法 </span></span><br><span class="line">        yaoAfter();</span><br><span class="line">    &#125;</span><br><span class="line">    lastX = x;</span><br><span class="line">    lastY = y;</span><br><span class="line">    lastZ = z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">yaoAfter</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//说明：说见案例摇一摇效果中yao.js</span></span><br></pre></td></tr></table></figure></p>
+<p>微信浏览器用户调整字体大小后页面矬了，怎么阻止用户调整<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以下代码可使Android机页面不再受用户字体缩放强制改变大小，但是会有1S左右延时，期间可以考虑loading来处理</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span>(WeixinJSBridge) == <span class="string">"undefined"</span>) &#123;</span><br><span class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">"WeixinJSBridgeReady"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            WeixinJSBridge.invoke(<span class="string">'setFontSizeCallback'</span>, &#123; <span class="string">'fontSize'</span>:<span class="number">0</span>&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">                alert(<span class="built_in">JSON</span>.stringify(res));</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;, <span class="number">0</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;  </span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        WeixinJSBridge.invoke(<span class="string">'setFontSizeCallback'</span>, &#123; <span class="string">'fontSize'</span>:<span class="number">0</span>&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">            alert(<span class="built_in">JSON</span>.stringify(res));</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;, <span class="number">0</span>)   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//IOS下可使用 -webkit-text-size-adjust禁止用户调整字体大小</span></span><br><span class="line">body &#123; -webkit-text-size-adjust:<span class="number">100</span>%!important; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//最好的解决方案：最好使用rem或百分比布局</span></span><br></pre></td></tr></table></figure></p>
+<p>定位的坑<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">//fixed定位</span><br><span class="line">//1.ios下fixed元素容易定位出错，软键盘弹出时，影响fixed元素定位</span><br><span class="line">//2.android下fixed表现要比iOS更好，软键盘弹出时，不会影响fixed元素定位</span><br><span class="line">//3.ios4下不支持position:fixed</span><br><span class="line">//解决方案：使用[Iscroll](http://cubiq.org/iscroll-5)，如：</span><br><span class="line">&lt;div id=&quot;wrapper&quot;&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">               &lt;li&gt;&lt;/li&gt;</span><br><span class="line">               .....</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script src=&quot;iscroll.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var myscroll;</span><br><span class="line">    function loaded()&#123;</span><br><span class="line">        myscroll=new iScroll(&quot;wrapper&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    window.addEventListener(&quot;DOMContentLoaded&quot;,loaded,false);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//position定位</span><br><span class="line">//Android下弹出软键盘弹出时，影响absolute元素定位</span><br><span class="line">//解决方案:</span><br><span class="line">var ua = navigator.userAgent.indexOf(&apos;Android&apos;);</span><br><span class="line">if(ua&gt;-1)&#123;</span><br><span class="line">    $(&apos;.ipt&apos;).on(&apos;focus&apos;, function()&#123;</span><br><span class="line">        $(&apos;.css&apos;).css(&#123;&apos;visibility&apos;:&apos;hidden&apos;&#125;)</span><br><span class="line">    &#125;).on(&apos;blur&apos;, function()&#123;</span><br><span class="line">        $(&apos;.css&apos;).css(&#123;&apos;visibility&apos;:&apos;visible&apos;&#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>播放视频不全屏<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">1.ios7+支持自动播放</span></span><br><span class="line"><span class="comment">2.支持Airplay的设备（如：音箱、Apple TV)播放</span></span><br><span class="line"><span class="comment">x-webkit-airplay="true" </span></span><br><span class="line"><span class="comment">3.播放视频不全屏</span></span><br><span class="line"><span class="comment">webkit-playsinline="true" </span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">x-webkit-airplay</span>=<span class="string">"true"</span> <span class="attr">webkit-playsinline</span>=<span class="string">"true"</span> <span class="attr">preload</span>=<span class="string">"auto"</span> <span class="attr">autoplay</span> <span class="attr">src</span>=<span class="string">"http://"</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>JS判断设备<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deviceType</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ua = navigator.userAgent;</span><br><span class="line">    <span class="keyword">var</span> agent = [<span class="string">"Android"</span>, <span class="string">"iPhone"</span>, <span class="string">"SymbianOS"</span>, <span class="string">"Windows Phone"</span>, <span class="string">"iPad"</span>, <span class="string">"iPod"</span>];    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;len,len = agent.length; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(ua.indexOf(agent[i])&gt;<span class="number">0</span>)&#123;         </span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">deviceType();</span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    deviceType();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>JS判断微信浏览器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function isWeixin()&#123;</span><br><span class="line">    var ua = navigator.userAgent.toLowerCase();</span><br><span class="line">    if(ua.match(/MicroMessenger/i)==&apos;micromessenger&apos;)&#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>android 2.3 bug<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//1.@-webkit-keyframes 需要以0%开始100%结束，0%的百分号不能去掉</span><br><span class="line">//2.after和before伪类无法使用动画animation</span><br><span class="line">//3.border-radius不支持%单位，如要兼容，可以给radius设置一下较大的值</span><br><span class="line">//4.translate百分比的写法和scale在一起会导致失效，例如：</span><br><span class="line">-webkit-transform: translate(-50%,-50%) scale(-0.5, 1)</span><br></pre></td></tr></table></figure></p>
+<p>android 4.x bug<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//1.三星 Galaxy S4中自带浏览器不支持border-radius缩写</span><br><span class="line">//2.同时设置border-radius和背景色的时候，背景色会溢出到圆角以外部分</span><br><span class="line">//3.部分手机(如三星)，a链接支持鼠标:visited事件，也就是说链接访问后文字变为紫色</span><br><span class="line">//4.android无法同时播放多音频audio</span><br></pre></td></tr></table></figure></p>
+<p>消除transition闪屏<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.css</span> &#123;</span><br><span class="line">    <span class="attribute">-webkit-transform-style</span>: preserve-<span class="number">3</span>d;</span><br><span class="line">    <span class="attribute">-webkit-backface-visibility</span>: hidden;</span><br><span class="line">    <span class="attribute">-webkit-perspective</span>: <span class="number">1000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>开启硬件加速<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//目前，像Chrome/Filefox/Safari/IE9+以及最新版本Opera都支持硬件加速，当检测到某个DOM元素应用了某些CSS规则时就会自动开启，从而解决页面闪白，保证动画流畅。</span><br><span class="line"><span class="selector-class">.css</span> &#123;</span><br><span class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">translate3d</span>(0,0,0);</span><br><span class="line">    <span class="attribute">-moz-transform</span>: <span class="built_in">translate3d</span>(0,0,0);</span><br><span class="line">    <span class="attribute">-ms-transform</span>: <span class="built_in">translate3d</span>(0,0,0);</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(0,0,0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>渲染优化<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.禁止使用iframe（阻塞父文档onload事件）</span></span><br><span class="line"><span class="comment">//2.禁止使用gif图片实现loading效果（降低CPU消耗，提升渲染性能）</span></span><br><span class="line"><span class="comment">//使用CSS3代码代替JS动画；</span></span><br><span class="line"><span class="comment">//开启GPU加速；</span></span><br><span class="line"><span class="comment">//使用base64位编码图片(不小图而言，大图不建议使用)</span></span><br><span class="line">    <span class="comment">// 对于一些小图标，可以使用base64位编码，以减少网络请求。但不建议大图使用，比较耗费CPU。小图标优势在于：</span></span><br><span class="line">    <span class="comment">//1.减少HTTP请求；</span></span><br><span class="line">    <span class="comment">//2.避免文件跨域；</span></span><br><span class="line">    <span class="comment">//3.修改及时生效；</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="常用的移动端框架"><a href="#常用的移动端框架" class="headerlink" title="常用的移动端框架"></a>常用的移动端框架</h3><ul>
+<li><p>zepto.js</p>
+<ul>
+<li><a href="http://zeptojs.com/" target="_blank" rel="noopener">官网</a></li>
+<li><a href="http://www.css88.com/doc/zeptojs_api/" target="_blank" rel="noopener">中文网</a></li>
+<li><a href="https://github.com/madrobby/zepto/blob/master/src/detect.js" target="_blank" rel="noopener">浏览器检测</a></li>
+<li><a href="https://github.com/madrobby/zepto/blob/master/src/touch.js" target="_blank" rel="noopener">tap</a></li>
+</ul>
+<p><a href="http://www.open-open.com/lib/view/open1449325854077.html" target="_blank" rel="noopener">H5移动端页面常见兼容问题及解决方案【原文】</a></p>
+</li>
+</ul>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/03/16/非常实用的图片处理工具/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/12/18/动手实现chrome插件/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.jpg" alt="Ccc Noob's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        luckycpf@163.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2019/02/">二月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">2</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签">
+                
+                    <i class="material-icons sidebar-material-icons">loyalty</i>
+                
+                标签
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="关于">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                关于
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="友情链接">
+                
+                    <i class="material-icons sidebar-material-icons">link</i>
+                
+                友情链接
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://weibo.com/u/5986638832" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/cccnoob" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Ccc Noob
+            
+                <br>
+                
+                    我只是个小前端
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.0 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
